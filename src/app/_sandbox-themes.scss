@@ -1,0 +1,160 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+:root {
+
+    // https://coolors.co/db2b39-29335c-f3a712-f0cea0-534d41
+    --poppy: #db2b39ff;         // warn
+    --delft-blue: #29335cff;    // primary
+    --orange-web: #f3a712ff;    // accent
+    --sunset: #f0cea0ff;        // light background
+    --walnut-brown: #534d41ff;  // dark background
+}
+
+$sandbox-delft-blue-palette: (
+    50: #e9ecf2,
+    100: #c6cedf,
+    200: #a3afca,
+    300: #8090b4,
+    400: #6477a4,
+    500: #496097,
+    600: #43588d,
+    700: #3a4e82,
+    800: #334475,
+    900: #29335c,       // primary
+    contrast: (
+        50: rgba(black, 0.87),
+        100: rgba(black, 0.87),
+        200: rgba(black, 0.87),
+        300: white,
+        400: white,
+        500: white,
+        600: white,
+        700: white,
+        800: white,
+        900: white,
+    )
+);
+
+$sandbox-orange-web-palette: (
+    50: #fefde7,
+    100: #fcf9c3,
+    200: #faf59b,
+    300: #f8f172,
+    400: #f5ec50,
+    500: #f2e72c,
+    600: #f5d829,
+    700: #f4c01f,
+    800: #f3a812,       // accent
+    900: #f17f00,
+    contrast: (
+        50: rgba(black, 0.87),
+        100: rgba(black, 0.87),
+        200: rgba(black, 0.87),
+        300: rgba(black, 0.87),
+        400: rgba(black, 0.87),
+        500: rgba(black, 0.87),
+        600: rgba(black, 0.87),
+        700: rgba(black, 0.87),
+        800: rgba(black, 0.87),
+        900: rgba(black, 0.87),
+    )
+);
+
+
+////////////////////////// THEME MIXINS ///////////////
+
+@mixin color($theme) {
+    // Get the color config from the theme.
+    $color-config: mat.get-color-config($theme);
+  
+    // Get the primary color palette from the color-config.
+    $primary-palette: map.get($color-config, 'primary');
+    $accent-palette: map.get($color-config, 'accent');
+    $warn-palette: map.get($color-config, 'warn');
+  
+    .sbx-primary {
+      // Read the 500 hue from the primary color palette.
+      background-color: mat.get-color-from-palette($primary-palette, 500);
+      color: mat.get-color-from-palette($primary-palette, '500-contrast');
+    }
+    
+    .sbx-accent {
+      // Read the 500 hue from the primary color palette.
+      background-color: mat.get-color-from-palette($accent-palette, 500);
+      color: mat.get-color-from-palette($accent-palette, '500-contrast');
+    }
+    
+    .sbx-warn {
+      // Read the 500 hue from the primary color palette.
+      background-color: mat.get-color-from-palette($warn-palette, 500);
+      color: mat.get-color-from-palette($warn-palette, '500-contrast');
+    }
+}
+
+@mixin typography($theme) {
+    // Get the typography config from the theme.
+    $typography-config: mat.get-typography-config($theme);
+  
+    .box-text {
+      font-family: mat.font-family($typography-config);
+    }
+}
+
+@mixin theme($theme) {
+    $color-config: mat.get-color-config($theme);
+    @if $color-config != null {
+      @include color($theme);
+    }
+  
+    $typography-config: mat.get-typography-config($theme);
+    @if $typography-config != null {
+      @include typography($theme);
+    }
+}
+
+
+////////// ANGULAR MATERIAL THEME ///////////////////
+
+
+$app-primary: mat.define-palette($sandbox-delft-blue-palette);
+$app-accent: mat.define-palette($sandbox-orange-web-palette);
+$app-warn: mat.define-palette(mat.$red-palette);
+
+// app-wide font setting
+$app-typography: mat.define-typography-config(
+    $font-family: 'Roboto',
+);
+
+$app-light-theme: mat.define-light-theme((
+    color: (
+            primary: $app-primary,
+            accent: $app-accent,
+            warn: $app-warn,
+    ),
+    // typography: mat.define-typography-config(),
+    typography: $app-typography,
+    density: 0,
+));
+
+$app-dark-theme: mat.define-dark-theme((
+    color: (
+            primary: $app-primary,
+            accent: $app-accent,
+            warn: $app-warn,
+    )
+));
+
+@include mat.core-theme($app-light-theme);
+@include mat.all-component-themes($app-light-theme);
+@include theme($app-light-theme);
+@include mat.typography-hierarchy($app-typography);
+
+.app-dark-theme {
+    @include mat.core-color($app-dark-theme);
+    @include mat.all-component-colors($app-dark-theme);
+    @include theme($app-dark-theme);
+}
+
+
+
