@@ -1,4 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@use './app/sandbox-themes' as sandbox;
+@include mat.core();
+
+////////// ANGULAR MATERIAL THEME ///////////////////
+
+
+// $app-primary: mat.define-palette(mat.$cyan-palette);
+// $app-secondary: mat.define-palette(mat.$blue-grey-palette);
+// $app-warn: mat.define-palette(mat.$red-palette);
+
+// $app-light-theme: mat.define-light-theme((
+//     color: (
+//             primary: $app-primary,
+//             accent: $app-secondary,
+//             warn: $app-warn,
+//     )
+// ));
+
+// $app-dark-theme: mat.define-dark-theme((
+//     color: (
+//             primary: $app-primary,
+//             accent: $app-secondary,
+//             warn: $app-warn,
+//     )
+// ));
+
+// @include mat.core-theme($app-light-theme);
+// @include mat.all-component-themes($app-light-theme);
+
+// .app-dark-theme {
+//     @include mat.core-color($app-dark-theme);
+//     @include mat.all-component-colors($app-dark-theme);
+// }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+p { margin: 0; padding: 0;}
