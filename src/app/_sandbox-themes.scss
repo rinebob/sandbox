@@ -1,5 +1,7 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
+@use './sanbox-mixins' as sandboxMixin;
+@use './sandbox-variables' as sandboxVar;
 
 :root {
 
@@ -80,13 +82,13 @@ $sandbox-orange-web-palette: (
     }
     
     .sbx-accent {
-      // Read the 500 hue from the primary color palette.
+      // Read the 500 hue from the accent color palette.
       background-color: mat.get-color-from-palette($accent-palette, 500);
       color: mat.get-color-from-palette($accent-palette, '500-contrast');
     }
     
     .sbx-warn {
-      // Read the 500 hue from the primary color palette.
+      // Read the 500 hue from the warn color palette.
       background-color: mat.get-color-from-palette($warn-palette, 500);
       color: mat.get-color-from-palette($warn-palette, '500-contrast');
     }
@@ -121,19 +123,14 @@ $app-primary: mat.define-palette($sandbox-delft-blue-palette);
 $app-accent: mat.define-palette($sandbox-orange-web-palette);
 $app-warn: mat.define-palette(mat.$red-palette);
 
-// app-wide font setting
-$app-typography: mat.define-typography-config(
-    $font-family: 'Roboto',
-);
-
 $app-light-theme: mat.define-light-theme((
     color: (
             primary: $app-primary,
             accent: $app-accent,
             warn: $app-warn,
     ),
-    // typography: mat.define-typography-config(),
-    typography: $app-typography,
+    // the app-wide font setting.  Controls all text that isn't otherwise set
+    typography: sandboxVar.$jost-typography,
     density: 0,
 ));
 
@@ -148,7 +145,6 @@ $app-dark-theme: mat.define-dark-theme((
 @include mat.core-theme($app-light-theme);
 @include mat.all-component-themes($app-light-theme);
 @include theme($app-light-theme);
-@include mat.typography-hierarchy($app-typography);
 
 .app-dark-theme {
     @include mat.core-color($app-dark-theme);

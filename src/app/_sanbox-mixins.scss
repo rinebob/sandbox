@@ -1,4 +1,5 @@
-
+@use '@angular/material' as mat;
+@use './sandbox-variables' as sandboxVar;
 
 ////////////// FLEXBOX //////////////////////
 
@@ -21,6 +22,142 @@
 }
 
 ////////////// END BORDER //////////////////////////// 
+
+///////////////// TYPOGRAPHY //////////////////////////
+
+// from https://material.angular.io/guide/typography at bottom
+@mixin typographyLevel($typography: sandboxVar.$jost-typography, $level: 'headline-1') {
+    @include mat.typography-level($typography, $level);
+}
+
+@mixin sbxH1() {
+    font-family: sandboxVar.$jost-font;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 35px;
+    letter-spacing: -0.33;
+};
+
+@mixin sbxH2() {
+    font-family: sandboxVar.$jost-font;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 29px;
+    letter-spacing: -0.25;
+};
+
+@mixin sbxH3() {
+    font-family: sandboxVar.$jost-font;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.25;
+};
+
+@mixin sbxH4() {
+    font-family: sandboxVar.$jost-font;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.19;
+};
+
+@mixin sbxBody1() {
+    font-family: sandboxVar.$jost-font;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+};
+
+@mixin sbxBody2() {
+    font-family: sandboxVar.$jost-font;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 21.7px;
+};
+
+@mixin sbxBody3() {
+    font-family: sandboxVar.$jost-font;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 19px;
+};
+
+// $sbxH1: mat.define-typography-level (
+//     $font-family: ,
+//     $font-weight: ,
+//     $font-size: ,
+//     $line-height: ,
+//     $letter-spacing: ,
+// );
+
+$sbxH1: mat.define-typography-level(
+    $font-family: sandboxVar.$jost-font,
+    $font-weight: 700,
+    $font-size: 24px,
+    $line-height: 35px,
+    $letter-spacing: -0.33,
+);
+
+$sbxH2: mat.define-typography-level(
+    $font-family: sandboxVar.$jost-font,
+    $font-weight: 700,
+    $font-size: 20px,
+    $line-height: 29px,
+    $letter-spacing: -0.25,
+);
+
+$sbxH3: mat.define-typography-level(
+    $font-family: sandboxVar.$jost-font,
+    $font-weight: 700,
+    $font-size: 18px,
+    $line-height: 26px,
+    $letter-spacing: -0.25,
+);
+
+$sbxH4: mat.define-typography-level(
+    $font-family: sandboxVar.$jost-font,
+    $font-weight: 700,
+    $font-size: 14px,
+    $line-height: 20px,
+    $letter-spacing: -0.19,
+);
+
+$sbxBody1: mat.define-typography-level(
+    $font-family: sandboxVar.$jost-font,
+    $font-weight: 400,
+    $font-size: 16px,
+    $line-height: 23px,
+);
+
+$sbxBody2: mat.define-typography-level(
+    $font-family: sandboxVar.$jost-font,
+    $font-weight: 400,
+    $font-size: 15px,
+    $line-height: 21.7px,
+);
+
+$sbxBody3: mat.define-typography-level(
+    $font-family: sandboxVar.$jost-font,
+    $font-weight: 600,
+    $font-size: 13px,
+    $line-height: 19px,
+);
+
+// $sbx-typogrgaphy-config: mat.define-typography-config(
+//     $sbxH1,
+//     $sbxH2,
+//     $sbxH3,
+//     $sbxH4,
+//     $sbxBody1,
+//     $sbxBody2,
+//     $sbxBody3,
+// );
+
+
+
+///////////////// END TYPOGRAPHY /////////////////////
+
 
 /////////////////////// ANGULAR MATERIAL BREAKPOINTS ////////////
 
