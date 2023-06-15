@@ -10,7 +10,7 @@ export const SANDBOX_NAV_BUTTONS:NavButtonConfig[] = [
 // from FrontendMentor.com product feedback app figma design
 // https://www.figma.com/file/Vx34JchT0ijjQOtbb2FZDA/product-feedback-app?type=design&node-id=0-1590&t=TSnIoy3yWW3tNvRE-0
 export const PRODUCT_FEEDBACK_APP_COLORS = [
-    '#ad1fea', '#4661e6', '#373f68', '#ffffff', '#f2f4ff', '#f7f8fd', '#3a4374', '#647196', '#f49f85', '#62bcfa', 
+    '#ad1fea', '#4661e6', '#373f68', '#ffffff', '#f2f4ff', '#f7f8fd', '#3a4374', '#647196', '#f49f85', '#62bcfa', "#d73737", '#373f68' 
 ];
 
 export const PRODUCT_FEEDBACK_APP_COLOR_SPECS: ColorSpec[] = [
@@ -18,71 +18,85 @@ export const PRODUCT_FEEDBACK_APP_COLOR_SPECS: ColorSpec[] = [
         "hex": "#ad1fea",
         "textColor": "#ffffff",
         "red": 173,
+        "green": 31,
         "blue": 234,
-        "green": 31
     },
     {
         "hex": "#4661e6",
         "textColor": "#ffffff",
         "red": 70,
+        "green": 97,
         "blue": 230,
-        "green": 97
     },
     {
         "hex": "#373f68",
         "textColor": "#ffffff",
         "red": 55,
+        "green": 63,
         "blue": 104,
-        "green": 63
     },
     {
         "hex": "#ffffff",
         "textColor": "#000000",
         "red": 255,
+        "green": 255,
         "blue": 255,
-        "green": 255
     },
     {
         "hex": "#f2f4ff",
         "textColor": "#000000",
         "red": 242,
+        "green": 244,
         "blue": 255,
-        "green": 244
     },
     {
         "hex": "#f7f8fd",
         "textColor": "#000000",
         "red": 247,
+        "green": 248,
         "blue": 253,
-        "green": 248
     },
     {
         "hex": "#3a4374",
         "textColor": "#ffffff",
         "red": 58,
+        "green": 67,
         "blue": 116,
-        "green": 67
     },
     {
         "hex": "#647196",
         "textColor": "#ffffff",
         "red": 100,
+        "green": 113,
         "blue": 150,
-        "green": 113
     },
     {
         "hex": "#f49f85",
         "textColor": "#ffffff",
         "red": 244,
+        "green": 159,
         "blue": 133,
-        "green": 159
     },
     {
         "hex": "#62bcfa",
         "textColor": "#ffffff",
         "red": 98,
+        "green": 188,
         "blue": 250,
-        "green": 188
+    },
+    {
+        "hex": "#d73737",
+        "textColor": "#ffffff",
+        "red": 215,
+        "green": 55,
+        "blue": 55,
+    },
+    {
+        "hex": "#373f68",
+        "textColor": "#ffffff",
+        "red": 55,
+        "green": 63,
+        "blue": 104,
     }
 ];
 
