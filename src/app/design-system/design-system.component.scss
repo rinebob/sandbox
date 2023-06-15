@@ -1,0 +1,176 @@
+@use '@angular/material' as mat;
+@use '../sanbox-mixins' as sandboxMixin;
+@use '../sandbox-variables' as sandboxVar;
+@use '../sandbox-themes' as sandbox;
+
+:host {
+    @include sandboxMixin.flexboxLayout(column, flex-start, center);
+    
+    .design-system-container {
+        @include sandboxMixin.flexboxLayout(column, flex-start, center);
+        height: 100%;
+        margin: 20px 50px;
+        max-width: 1440px;
+
+        .box-container {
+            @include sandboxMixin.flexboxLayout(row, space-between, flex-start);
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            
+            .box {
+                @include sandboxMixin.flexboxLayout(column, center, center);
+                border-radius: 4px;
+                height: 64px;
+                margin: 20px;
+                width: 15%;
+                
+                .color-text {
+                    @include sandboxMixin.typographyLevel($level: 'body-1');
+                }
+            }
+        }
+
+        .section {
+            margin-bottom: 50px;
+            width: 100%;
+        }
+
+        .typography-section {
+            @include sandboxMixin.flexboxLayout;
+            
+            .font-container {
+                width: 50%;
+            }
+
+        }
+
+        .text-container {
+            @include sandboxMixin.flexboxLayout(column, flex-start, flex-start);
+            margin-bottom: 20px;
+            width: 50%;
+        }
+        
+        .font-highlight {
+            @include sandboxMixin.flexboxLayout(row, center, center);
+            align-self: stretch;
+            
+        }
+
+        .specs-section {
+            @include sandboxMixin.flexboxLayout(row, flex-start, space-between);
+            width: 100%;
+            
+            .specs-container {
+                @include sandboxMixin.flexboxLayout(column, flex-start, flex-start);
+                width: 50%;
+                
+                .spec-container {
+                    @include sandboxMixin.flexboxLayout(column, flex-start, flex-start);
+                    width: 100%;
+        
+                    .typography-spec {
+                        @include sandboxMixin.sbxBody1;
+                        color: #647196;
+        
+                    }
+        
+        
+        
+                }
+            }
+
+        }
+        
+    }
+
+    .section-label {
+        align-self: center;
+        margin: 36px;
+    }
+
+    .font-letters-container { 
+        line-height: 40px;
+        letter-spacing: 9.55px;
+        width: 50%;
+
+        .caps {
+            @include sandboxMixin.sbxH2;
+            
+        }
+        
+        .lower {
+            @include sandboxMixin.sbxBody1;
+
+        }
+
+
+    }
+
+    .h-1 {
+        @include sandboxMixin.sbxH1;
+    }
+    
+    .h-2 {
+        @include sandboxMixin.sbxH2;
+    }
+    
+    .h-3 {
+        @include sandboxMixin.sbxH3;
+    }
+    
+    .h-4 {
+        @include sandboxMixin.sbxH4;
+    }
+    
+    .b-1 {
+        @include sandboxMixin.sbxBody1;
+    }
+    
+    .b-2 {
+        @include sandboxMixin.sbxBody2;
+    }
+    
+    .b-3 {
+        @include sandboxMixin.sbxBody3;
+    }
+
+    .headline-1 {
+        @include sandboxMixin.typographyLevel();
+    }
+    
+    .headline-2 {
+        @include sandboxMixin.typographyLevel($level: 'headline-2');
+    }
+    
+    .headline-3 {
+        @include sandboxMixin.typographyLevel($level: 'headline-3');
+    }
+    
+    .headline-4 {
+        @include sandboxMixin.typographyLevel($level: 'headline-4');
+    }
+    
+    .headline-5 {
+        @include sandboxMixin.typographyLevel($level: 'headline-5');
+    }
+    
+    .headline-6 {
+        @include sandboxMixin.typographyLevel($level: 'headline-6');
+    }
+    
+    .body-1 {
+        @include sandboxMixin.typographyLevel($level: 'body-1');
+    }
+    
+    .body-2 {
+        @include sandboxMixin.typographyLevel($level: 'body-2');
+    }
+    
+    .subtitle-2 {
+        @include sandboxMixin.typographyLevel($level: 'subtitle-2');
+    }
+    
+    .caption {
+        @include sandboxMixin.typographyLevel($level: 'caption');
+    }
+}

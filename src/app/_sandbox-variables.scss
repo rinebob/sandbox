@@ -1,0 +1,20 @@
+@use '@angular/material' as mat;
+
+// format for setting font style.  Don't use this in mixins
+$app-typography: mat.define-typography-config(
+    $font-family: 'Roboto',
+);
+
+$roboto-typography: mat.define-typography-config(
+    $font-family: 'Roboto',
+);
+
+$orbitron-typography: mat.define-typography-config(
+    $font-family: 'Orbitron',
+);
+
+$jost-typography: mat.define-typography-config(
+    $font-family: 'Jost',
+);
+
+$jost-font: 'Jost';
