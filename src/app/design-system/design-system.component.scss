@@ -35,6 +35,42 @@
             color: #647196;
         }
 
+        .menu-container {
+            @include sandboxMixin.flexboxLayout(column, space-between, flex-start);
+            border-radius: 10px;
+            box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
+            margin-top: 20px;
+            
+            .option {
+                @include sandboxMixin.sbxBody1;
+                @include sandboxMixin.color(transparent, sandboxVar.$color8);
+                padding: 12px 24px;
+                vertical-align: middle;
+                width: 255px;
+                
+                &:not(:last-of-type) {
+                    border-bottom: 1px solid rgba(sandboxVar.$color7, 0.15);
+                }
+            }
+            
+            p {
+                margin: 0;
+            }
+            
+            .active {
+                @include sandboxMixin.flexboxLayout(row, space-between, center);
+                border-bottom: 1px solid rgba(sandboxVar.$color7, 0.15);
+
+                mat-icon {
+                    @include sandboxMixin.color(transparent, sandboxVar.$color1);
+                }
+            }
+            
+            .hover {
+                @include sandboxMixin.color(transparent, sandboxVar.$color1);
+            }
+        }
+
         ////////////////// COLORS ///////////////////////
 
         .colors-section {
@@ -90,13 +126,13 @@
                     @include sandboxMixin.sbxBody1;
                 }
             }
+            
+            .font-highlight {
+                @include sandboxMixin.flexboxLayout(row, center, center);
+                align-self: stretch;
+            }
         }
         
-        .font-highlight {
-            @include sandboxMixin.flexboxLayout(row, center, center);
-            align-self: stretch;
-        }
-
         .specs-section {
             @include sandboxMixin.flexboxLayout(row, flex-start, space-between);
                 
@@ -109,259 +145,346 @@
                 }
             }
         }
-    }
-
-    ////////////////////// BUTTONS /////////////////////
-
-    .buttons-section {
-        @include sandboxMixin.flexboxLayout(row, space-evenly, flex-start);
-        width: 100%;
-    }
+        
+        ////////////////////// BUTTONS /////////////////////
     
-    .buttons-container {
-        @include sandboxMixin.flexboxLayout(column, flex-start, center);
-
-        .btn {
-            @include sandboxMixin.sbxH4;
-            border-radius: 10px;
-            height: 44px;
-            margin-bottom: 24px;
-            width: 158px;
-        }
-        
-        .hover {
-            opacity: .65;
-        }
-
-        .underline {
-            text-decoration: underline;
-        }
-
-        .button-label {
-            margin-bottom: 56px;
-        }
-
-        .btn-1 {
-            @include sandboxMixin.color(sandboxVar.$color1, sandboxVar.$color6);
-        }
-        
-        .btn-2 {
-            @include sandboxMixin.color(sandboxVar.$color2, sandboxVar.$color6);
-        }
+        .buttons-section {
+            @include sandboxMixin.flexboxLayout(row, space-evenly, flex-start);
+            width: 100%;
             
-        .btn-3 {
-            @include sandboxMixin.color(sandboxVar.$color7, sandboxVar.$color6);
-        }
-        
-        .btn-4 {
-            @include sandboxMixin.color(sandboxVar.$color11, sandboxVar.$color6);
-        }
-        
-        .btn-5 {
-            @include sandboxMixin.color(sandboxVar.$color6, sandboxVar.$color12);
-        }
-
-        .btn-6 {
-            @include sandboxMixin.color(sandboxVar.$color12, sandboxVar.$color6);
-        }
-
-
-    }
-
-    /////////////////////// INTERACTIVE ELEMENTS ///////////////////
-    
-    .interactive-section {
-        @include sandboxMixin.flexboxLayout;
-
-        .left {
-            @include sandboxMixin.flexboxLayout(row, space-evenly, center);
-            width: 50%;
-            
-            .column {
+            .buttons-container {
                 @include sandboxMixin.flexboxLayout(column, flex-start, center);
-                
-                .interactive-label {
-                    margin: 37px 0 88px;
-                }
         
                 .btn {
-                    @include sandboxMixin.flexboxLayout(column, center, center);
+                    @include sandboxMixin.sbxH4;
                     border-radius: 10px;
-                    height: 53px;
-                    
-                    .btn-text {
-                        @include sandboxMixin.sbxBody3;
-                        margin: 0;
-                    }
-        
-                    .caret {
-                        font-size: 20px;
-                    }
-                }
-                
-                .btn-default {
-                    @include sandboxMixin.color($backgroundColor: sandboxVar.$color5);
-        
-                    & .light {
-                        @include sandboxMixin.color($color: sandboxVar.$color2);
-                    }
-                    
-                    & .dark {
-                        @include sandboxMixin.color($color: sandboxVar.$color7);
-                    }
-                }
-                
-                .btn-hover {
-                    @include sandboxMixin.color($backgroundColor: sandboxVar.$color13);
-                    
-                    & .light {
-                        @include sandboxMixin.color($color: sandboxVar.$color2);
-        
-                    }
-                    
-                    & .dark {
-                        @include sandboxMixin.color($color: sandboxVar.$color7);
-                    }
-                }
-                
-                .btn-active {
-                    @include sandboxMixin.color($backgroundColor: sandboxVar.$color2);
-                }
-            }
-        }
-        
-        .right {
-            @include sandboxMixin.flexboxLayout(column, flex-start, flex-start);
-            height: 100%;
-            padding: 0 50px;
-            width: 50%;
-            
-            .sort-buttons-container {
-                @include sandboxMixin.flexboxLayout(column, space-between, flex-start);
-
-                .sort-button {
-                    @include sandboxMixin.color(sandboxVar.$color12, sandboxVar.$color5);
-                    border-radius: 10px;
-                    padding: 26px 18px;
-                    
-                    &-1 {
-                        margin-bottom: 50px;
-                    }
-        
-                }
-
-            }
-
-            .menu-container {
-                @include sandboxMixin.flexboxLayout(column, space-between, flex-start);
-                border-radius: 10px;
-                box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
-                margin-top: 20px;
-                
-                .option {
-                    @include sandboxMixin.sbxBody1;
-                    @include sandboxMixin.color(transparent, sandboxVar.$color8);
-                    padding: 12px 24px;
-                    vertical-align: middle;
-                    width: 255px;
-                    
-                    &:not(:last-of-type) {
-                        border-bottom: 1px solid rgba(sandboxVar.$color7, 0.15);
-                    }
-                }
-                
-                p {
-                    margin: 0;
-                }
-                
-                .active {
-                    @include sandboxMixin.flexboxLayout(row, space-between, center);
-                    border-bottom: 1px solid rgba(sandboxVar.$color7, 0.15);
-
-                    mat-icon {
-                        @include sandboxMixin.color(transparent, sandboxVar.$color1);
-                    }
+                    height: 44px;
+                    margin-bottom: 24px;
+                    width: 158px;
                 }
                 
                 .hover {
-                    @include sandboxMixin.color(transparent, sandboxVar.$color1);
+                    opacity: .65;
+                }
+        
+                .underline {
+                    text-decoration: underline;
+                }
+        
+                .button-label {
+                    margin-bottom: 56px;
+                }
+        
+                .btn-1 {
+                    @include sandboxMixin.color(sandboxVar.$color1, sandboxVar.$color6);
+                }
+                
+                .btn-2 {
+                    @include sandboxMixin.color(sandboxVar.$color2, sandboxVar.$color6);
+                }
+                    
+                .btn-3 {
+                    @include sandboxMixin.color(sandboxVar.$color7, sandboxVar.$color6);
+                }
+                
+                .btn-4 {
+                    @include sandboxMixin.color(sandboxVar.$color11, sandboxVar.$color6);
+                }
+                
+                .btn-5 {
+                    @include sandboxMixin.color(sandboxVar.$color6, sandboxVar.$color12);
+                }
+        
+                .btn-6 {
+                    @include sandboxMixin.color(sandboxVar.$color12, sandboxVar.$color6);
+                }
+        
+        
+            }
+        }
+        
+        /////////////////////// INTERACTIVE ELEMENTS ///////////////////
+        
+        .interactive-section {
+            @include sandboxMixin.flexboxLayout;
+    
+            .left {
+                @include sandboxMixin.flexboxLayout(row, space-evenly, center);
+                width: 50%;
+                
+                .column {
+                    @include sandboxMixin.flexboxLayout(column, flex-start, center);
+                    
+                    .interactive-label {
+                        margin: 37px 0 88px;
+                    }
+            
+                    .btn {
+                        @include sandboxMixin.flexboxLayout(column, center, center);
+                        border-radius: 10px;
+                        height: 53px;
+                        
+                        .btn-text {
+                            @include sandboxMixin.sbxBody3;
+                            margin: 0;
+                        }
+            
+                        .caret {
+                            font-size: 20px;
+                        }
+                    }
+                    
+                    .btn-default {
+                        @include sandboxMixin.color($backgroundColor: sandboxVar.$color5);
+            
+                        & .light {
+                            @include sandboxMixin.color($color: sandboxVar.$color2);
+                        }
+                        
+                        & .dark {
+                            @include sandboxMixin.color($color: sandboxVar.$color7);
+                        }
+                    }
+                    
+                    .btn-hover {
+                        @include sandboxMixin.color($backgroundColor: sandboxVar.$color13);
+                        
+                        & .light {
+                            @include sandboxMixin.color($color: sandboxVar.$color2);
+            
+                        }
+                        
+                        & .dark {
+                            @include sandboxMixin.color($color: sandboxVar.$color7);
+                        }
+                    }
+                    
+                    .btn-active {
+                        @include sandboxMixin.color($backgroundColor: sandboxVar.$color2);
+                    }
+                }
+            }
+            
+            .right {
+                @include sandboxMixin.flexboxLayout(column, flex-start, flex-start);
+                height: 100%;
+                padding: 0 50px;
+                width: 50%;
+                
+                .sort-buttons-container {
+                    @include sandboxMixin.flexboxLayout(column, space-between, flex-start);
+    
+                    .sort-button {
+                        @include sandboxMixin.color(sandboxVar.$color12, sandboxVar.$color5);
+                        border-radius: 10px;
+                        padding: 26px 18px;
+                        
+                        &-1 {
+                            margin-bottom: 50px;
+                        }
+                    }
                 }
             }
         }
-    }
 
-    //////////////////// FORM ELEMENTS //////////////////////
+        //////////////////// FORM ELEMENTS //////////////////////
+    
+        .forms-section {
+            @include sandboxMixin.flexboxLayout(column, space-between, flex-start);
+            
+            .forms-group {
+                @include sandboxMixin.flexboxLayout(row, space-evenly, flex-start);
 
+                & .top {
+                    width: 100%;
+                }
+                
+                .form-container {
+                    @include sandboxMixin.flexboxLayout(column, space-between, center);
+                    position: relative;
     
-    ////////////////////// SANDBOX TEXT MIXINS ///////////////////
+                    &:not(:last-of-type) {
+                        margin-right: 20px;
+                    }
+    
+                    .form-label {
+                        margin-bottom: 24px;
+                    }
+    
+                    .form-control {
+                        border-radius: 4px;
+                        height: 48px;
+                        padding: 0 20px;
+                        width: 255px;
+                        border: none;
+    
+                        &-default {
+                            @include sandboxMixin.border1(sandboxVar.$color8);
+                            @include sandboxMixin.color(transparent, sandboxVar.$color7);
+                            
+                            &:focus, :focus-visible {
+                                @include sandboxMixin.border1(sandboxVar.$color8);
+                                outline: none;
+                            }
+                        }
+                        
+                        &-filled {
+                            @include sandboxMixin.border1(sandboxVar.$color8);
+                            @include sandboxMixin.color(transparent, sandboxVar.$color7);
+                            
+                            &:focus, :focus-visible {
+                                @include sandboxMixin.border1(sandboxVar.$color8);
+                                outline: none;
+                            }
+                        }
+                        
+                        &-active {
+                            @include sandboxMixin.border1(sandboxVar.$color2);
+                            @include sandboxMixin.color(transparent, sandboxVar.$color7);
+                            
+                            &:focus, :focus-visible {
+                                @include sandboxMixin.border1(sandboxVar.$color2);
+                                outline: none;
+                            }
+                        }
+                        
+                        &-error {
+                            @include sandboxMixin.border1(sandboxVar.$color11);
+                            @include sandboxMixin.color(transparent, sandboxVar.$color7);
+                            
+                            &:focus, :focus-visible {
+                                @include sandboxMixin.border1(sandboxVar.$color11);
+                                outline: none;
+                            }
+                        }
+                    }
+                    
+                    .error-text {
+                        @include sandboxMixin.fontSpec(
+                            $fontFamily: sandboxVar.$jost-font,
+                            $fontWeight: 400,
+                            $fontSize: 14px,
+                            $lineHeight: 20px,
+                        );
+                        @include sandboxMixin.color(transparent, sandboxVar.$color11);
+                        align-self: flex-start;
+                    }
+                    
+                    .dropdown {
+                        border-radius: 4px;
+                        height: 48px;
+                        padding: 0 20px;
+                        width: 297px;
+                        border: none;
 
-    .h-1 {
-        @include sandboxMixin.sbxH1;
-    }
-    
-    .h-2 {
-        @include sandboxMixin.sbxH2;
-    }
-    
-    .h-3 {
-        @include sandboxMixin.sbxH3;
-    }
-    
-    .h-4 {
-        @include sandboxMixin.sbxH4;
-    }
-    
-    .b-1 {
-        @include sandboxMixin.sbxBody1;
-    }
-    
-    .b-2 {
-        @include sandboxMixin.sbxBody2;
-    }
-    
-    .b-3 {
-        @include sandboxMixin.sbxBody3;
-    }
+                        &-default {
+                            @include sandboxMixin.border1(sandboxVar.$color8);
+                            @include sandboxMixin.color(transparent, sandboxVar.$color7);
+                            
+                            &:focus, :focus-visible {
+                                @include sandboxMixin.border1(sandboxVar.$color8);
+                                outline: none;
+                            }
+                        }
 
-    /////////////////// MATERIAL TYPOGRAPHY LEVEL MIXINS //////////////
+                        &-active {
+                            @include sandboxMixin.border1(sandboxVar.$color8);
+                            @include sandboxMixin.color(transparent, sandboxVar.$color7);
+                            
+                            &:focus, :focus-visible {
+                                @include sandboxMixin.border1(sandboxVar.$color2);
+                                outline: none;
+                            }
+                        }
 
-    .headline-1 {
-        @include sandboxMixin.typographyLevel();
-    }
+                        .option {
+                            @include sandboxMixin.sbxBody1;
+                            @include sandboxMixin.color(transparent, sandboxVar.$color8);
+                            padding: 12px 24px;
+                            vertical-align: middle;
+                            width: 255px;
+                            
+                            &:not(:last-of-type) {
+                                border-bottom: 1px solid rgba(sandboxVar.$color7, 0.15);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        ////////////////////// SANDBOX TEXT MIXINS ///////////////////
     
-    .headline-2 {
-        @include sandboxMixin.typographyLevel($level: 'headline-2');
-    }
+        .h-1 {
+            @include sandboxMixin.sbxH1;
+        }
+        
+        .h-2 {
+            @include sandboxMixin.sbxH2;
+        }
+        
+        .h-3 {
+            @include sandboxMixin.sbxH3;
+        }
+        
+        .h-4 {
+            @include sandboxMixin.sbxH4;
+        }
+        
+        .b-1 {
+            @include sandboxMixin.sbxBody1;
+        }
+        
+        .b-2 {
+            @include sandboxMixin.sbxBody2;
+        }
+        
+        .b-3 {
+            @include sandboxMixin.sbxBody3;
+        }
     
-    .headline-3 {
-        @include sandboxMixin.typographyLevel($level: 'headline-3');
-    }
+        /////////////////// MATERIAL TYPOGRAPHY LEVEL MIXINS //////////////
     
-    .headline-4 {
-        @include sandboxMixin.typographyLevel($level: 'headline-4');
-    }
+        .headline-1 {
+            @include sandboxMixin.typographyLevel();
+        }
+        
+        .headline-2 {
+            @include sandboxMixin.typographyLevel($level: 'headline-2');
+        }
+        
+        .headline-3 {
+            @include sandboxMixin.typographyLevel($level: 'headline-3');
+        }
+        
+        .headline-4 {
+            @include sandboxMixin.typographyLevel($level: 'headline-4');
+        }
+        
+        .headline-5 {
+            @include sandboxMixin.typographyLevel($level: 'headline-5');
+        }
+        
+        .headline-6 {
+            @include sandboxMixin.typographyLevel($level: 'headline-6');
+        }
+        
+        .body-1 {
+            @include sandboxMixin.typographyLevel($level: 'body-1');
+        }
+        
+        .body-2 {
+            @include sandboxMixin.typographyLevel($level: 'body-2');
+        }
+        
+        .subtitle-2 {
+            @include sandboxMixin.typographyLevel($level: 'subtitle-2');
+        }
+        
+        .caption {
+            @include sandboxMixin.typographyLevel($level: 'caption');
+        }
+
+    }   // design system container
     
-    .headline-5 {
-        @include sandboxMixin.typographyLevel($level: 'headline-5');
-    }
-    
-    .headline-6 {
-        @include sandboxMixin.typographyLevel($level: 'headline-6');
-    }
-    
-    .body-1 {
-        @include sandboxMixin.typographyLevel($level: 'body-1');
-    }
-    
-    .body-2 {
-        @include sandboxMixin.typographyLevel($level: 'body-2');
-    }
-    
-    .subtitle-2 {
-        @include sandboxMixin.typographyLevel($level: 'subtitle-2');
-    }
-    
-    .caption {
-        @include sandboxMixin.typographyLevel($level: 'caption');
-    }
-}
+}   // host
