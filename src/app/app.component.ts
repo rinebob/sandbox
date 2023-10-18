@@ -1,6 +1,8 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 
+import { SANDBOX_NAV_BUTTONS } from '../app/common/constants';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,6 +11,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'sandbox';
   darkModeOn = false;
+
+  readonly SANDBOX_NAV_BUTTONS = SANDBOX_NAV_BUTTONS;
 
   constructor(@Inject(DOCUMENT) private doc: Document ) {
 

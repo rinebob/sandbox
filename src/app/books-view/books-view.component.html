@@ -1,0 +1,25 @@
+
+<div class="books-view-container" *ngIf="allBooks$ | async as books">
+
+    <div class="upper-section">
+
+        <app-book-form [book]="(selectedBook$ | async)!"
+                       (outputBook)="handleBookOutput($event)"
+        >
+
+        </app-book-form>
+
+    </div>
+
+    <div class="lower-section">
+
+        <app-books-table [allBooks]="books"
+                         (selectedBookId)="handleSetSelectedBookId($event)"
+                         (deleteBook)="handleDeleteBook($event)"
+        >
+
+        </app-books-table>
+
+    </div>
+
+</div>

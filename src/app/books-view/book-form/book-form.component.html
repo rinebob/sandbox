@@ -1,0 +1,83 @@
+
+<div class="book-form-container">
+
+    <h2>Add/Edit Book</h2>
+
+    <form [formGroup]="bookForm" (ngSubmit)="handleSave()">
+
+        <div class="left">
+       
+            <!-- Title control -->
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Title</mat-label>
+                
+                <input matInput placeholder="Book title" formControlName="titleControl">
+                
+            </mat-form-field>
+    
+            <!-- Author control -->
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Author</mat-label>
+                
+                <input matInput placeholder="Author" formControlName="authorControl">
+                
+            </mat-form-field>
+
+            
+
+        </div>
+
+        <div class="right">
+
+            <!-- Year control -->
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Year</mat-label>
+                
+                <input matInput placeholder="Year published" formControlName="yearControl">
+                
+            </mat-form-field>
+       
+            <!-- Category control -->
+            
+            <!-- <mat-form-field appearance="outline">
+                <mat-label>Category</mat-label>
+                
+                <input matInput placeholder="Category" formControlName="categoryControl">
+                
+            </mat-form-field> -->
+    
+            <!-- Type control -->
+            
+            <!-- <mat-form-field appearance="outline">
+                <mat-label>Type</mat-label>
+                
+                <input matInput placeholder="Fiction or non-fiction" formControlName="typeControl">
+                
+            </mat-form-field> -->
+
+            <div class="buttons-container">
+
+                <button mat-raised-button 
+                        class="action-button cancel"
+                        (click)="handleCancel()"
+                >
+                    Cancel
+                </button>
+                
+                <button mat-raised-button 
+                        class="action-button save"
+                        type="submit"
+                >
+                    Save
+                </button>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
