@@ -1,0 +1,49 @@
+@use '@angular/material' as mat;
+@use '../../sanbox-mixins' as sandboxMixin;
+@use '../../sandbox-variables' as sandboxVar;
+@use '../../sandbox-themes' as sandbox;
+
+:host {
+    width: 100%;
+
+    .book-form-container {
+        @include sandboxMixin.flexboxLayout(column, flex-start, center);
+        
+        form {
+            @include sandboxMixin.flexboxLayout(row, space-evenly, flex-start);
+            width: 100%;
+            
+            .left {
+                @include sandboxMixin.flexboxLayout(column, flex-start, flex-start);
+                
+            }
+            
+            .right {
+                @include sandboxMixin.flexboxLayout(column, flex-start, flex-start);
+                
+                .buttons-container {
+                    @include sandboxMixin.flexboxLayout(row, flex-end, center);
+                    gap: 10px;
+    
+                }
+
+                .action-button {
+                    padding: 8px 24px;
+                }
+
+                .cancel {
+                    background-color: sandboxVar.$color11;
+                    
+                }
+                
+                .save {
+                    background-color: sandboxVar.$color10;
+
+                }
+            }
+            
+
+        }
+        
+    }
+}

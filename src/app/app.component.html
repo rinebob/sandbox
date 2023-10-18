@@ -1,60 +1,48 @@
 
 <mat-toolbar color="primary">
 
-  <button mat-icon-button class="open-sidenav-button" (click)="sidenav.open()">
+    <button mat-icon-button class="open-sidenav-button" (click)="sidenav.open()">
 
-    <mat-icon>menu</mat-icon>
+        <mat-icon>menu</mat-icon>
 
-  </button>
+    </button>
 
-  <mat-slide-toggle color="accent"
+    <mat-slide-toggle color="accent"
                     (change)="toggleDarkMode()"
                     [checked]="darkModeOn"
-  >
+    >
     Dark mode
-  </mat-slide-toggle>
+    </mat-slide-toggle>
 
 </mat-toolbar>
 
 <mat-sidenav-container>
-
   
-  <!-- opened="true" -->
-  <mat-sidenav #sidenav
-               mode="push"
-  >
+    <!-- opened="true" -->
+    <mat-sidenav #sidenav
+                mode="push"
+    >
 
-    <div class="drawer-container">
+        <div class="drawer-container">
 
-      <button type="button"
-              color="primary"
-              mat-raised-button
-              routerLink="/design-system"
-              class="nav-button"
-              (click)="sidenav.close()"
-      >
-        Design system
-      </button>
-      
-      <button type="button"
-              color="primary"
-              mat-raised-button
-              routerLink="/material-view"
-              class="nav-button"
-              (click)="sidenav.close()"
-      >
-        Material components
-      </button>
-      
-      
-    </div>
+            <button *ngFor="let button of SANDBOX_NAV_BUTTONS" type="button"
+                    color="primary"
+                    mat-raised-button
+                    [routerLink]="button.routerLink"
+                    class="nav-button"
+                    (click)="sidenav.close()"
+            >
+            {{button.text}}
+            </button>      
+            
+        </div>
 
-  </mat-sidenav>
+    </mat-sidenav>
 
-  <mat-sidenav-content>
-    
-    <router-outlet></router-outlet>
-    
-  </mat-sidenav-content>
+    <mat-sidenav-content>
+
+        <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
 
 </mat-sidenav-container>

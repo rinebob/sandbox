@@ -1,0 +1,18 @@
+@use '@angular/material' as mat;
+@use '../sanbox-mixins' as sandboxMixin;
+@use '../sandbox-variables' as sandboxVar;
+@use '../sandbox-themes' as sandbox;
+
+:host {
+
+    .new-features-container {
+
+        .upper-section {
+
+        }
+
+        .lower-section {
+            
+        }
+    }
+}

@@ -1,0 +1,93 @@
+<div class="books-table-container">
+
+    <table mat-table [dataSource]="allBooks" class="books-table">
+
+        <!-- Id -->
+
+        <ng-container matColumnDef="id">
+
+            <th mat-header-cell *matHeaderCellDef>Id</th>
+            <td mat-cell *matCellDef="let book">{{book.id}}</td>
+
+        </ng-container>
+
+        <!-- Title -->
+
+        <ng-container matColumnDef="title">
+
+            <th mat-header-cell *matHeaderCellDef>Title</th>
+            <td mat-cell *matCellDef="let book">{{book.title}}</td>
+
+        </ng-container>
+        
+
+        <!-- Author -->
+
+        <ng-container matColumnDef="author">
+
+            <th mat-header-cell *matHeaderCellDef>Author</th>
+            <td mat-cell *matCellDef="let book">{{book.author}}</td>
+
+        </ng-container>
+
+        <!-- Year -->
+
+        <ng-container matColumnDef="year">
+
+            <th mat-header-cell *matHeaderCellDef>Year</th>
+            <td mat-cell *matCellDef="let book">{{book.year}}</td>
+
+        </ng-container>
+        
+        <ng-container matColumnDef="actions">
+
+            <th mat-header-cell *matHeaderCellDef>Edit/delete</th>
+            <td mat-cell *matCellDef="let book">
+                <div class="buttons-container">
+
+                    <button mat-icon-button 
+                            class="action-button edit"
+                            (click)="handleEdit(book.id)"
+                    >
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    
+                    <button mat-icon-button 
+                            class="action-button delete"
+                            (click)="handleDelete(book.id)"
+                    >
+                    <mat-icon>delete</mat-icon>
+                        
+                    </button>
+    
+                </div>
+            </td>
+
+        </ng-container>
+
+        <!-- Category -->
+
+        <!-- <ng-container matColumnDef="category">
+
+            <th mat-header-cell *matHeaderCellDef>Category</th>
+            <td mat-cell *matCellDef="let book">{{book.category}}</td>
+
+        </ng-container> -->
+
+        <!-- Type -->
+
+        <!-- <ng-container matColumnDef="type">
+
+            <th mat-header-cell *matHeaderCellDef>Type</th>
+            <td mat-cell *matCellDef="let book">{{book.type}}</td>
+
+        </ng-container> -->
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    
+
+</div>
