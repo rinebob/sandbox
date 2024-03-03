@@ -20,6 +20,7 @@
         
         .lower-section {
             @include sandboxMixin.flexboxLayout(column, flex-start, center);
+            margin-top: 20px;
             width: 100%;
             
         }

@@ -4,6 +4,7 @@
     <div class="upper-section">
 
         <app-book-form [book]="(selectedBook$ | async)!"
+                       [nextId]="(nextId$ | async)!"
                        (outputBook)="handleBookOutput($event)"
         >
 

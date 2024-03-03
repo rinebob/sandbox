@@ -45,6 +45,7 @@ export interface Book {
     category?: Category;
     tags?: string[];
     type?: BookType;   // fiction or non-fiction
+    pagesRead: number;
 }
 
 export enum Category {

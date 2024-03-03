@@ -206,6 +206,7 @@ export const GREAT_GATSBY: Book = {
     category: Category.DRAMA,
     type: BookType.FICTION,
     tags: [],
+    pagesRead: 45,
 };
 
 export const LORD_OF_THE_RINGS: Book = {
@@ -216,6 +217,7 @@ export const LORD_OF_THE_RINGS: Book = {
     category: Category.FANTASY,
     type: BookType.FICTION,
     tags: [],
+    pagesRead: 23,
 };
 
 export const CATCHER_IN_THE_RYE: Book = {
@@ -226,6 +228,7 @@ export const CATCHER_IN_THE_RYE: Book = {
     category: Category.DRAMA,
     type: BookType.FICTION,
     tags: [],
+    pagesRead: 53,
 };
 
 export const NINETEEN_EIGHTY_FOUR: Book = {
@@ -236,6 +239,7 @@ export const NINETEEN_EIGHTY_FOUR: Book = {
     category: Category.SCIENCE_FICTION,
     type: BookType.FICTION,
     tags: [],
+    pagesRead: 112,
 };
 
 export const PRIDE_AND_PREJUDICE: Book = {
@@ -246,6 +250,7 @@ export const PRIDE_AND_PREJUDICE: Book = {
     category: Category.ROMANCE,
     type: BookType.FICTION,
     tags: [],
+    pagesRead: 23,
 };
 
 export const CATCH_TWENTY_TWO: Book = {
@@ -256,6 +261,7 @@ export const CATCH_TWENTY_TWO: Book = {
     category: Category.HUMOR,
     type: BookType.FICTION,
     tags: [],
+    pagesRead: 155,
 };
 
 export const ANIMAL_FARM: Book = {
@@ -266,6 +272,7 @@ export const ANIMAL_FARM: Book = {
     category: Category.HISTORY,
     type: BookType.FICTION,
     tags: [],
+    pagesRead: 78,
 };
 
 export const BRAVE_NEW_WORLD: Book = {
@@ -276,6 +283,7 @@ export const BRAVE_NEW_WORLD: Book = {
     category: Category.SCIENCE_FICTION,
     type: BookType.FICTION,
     tags: [],
+    pagesRead: 85,
 };
 
 export const BRIEF_HISTORY_OF_TIME: Book = {
@@ -286,6 +294,7 @@ export const BRIEF_HISTORY_OF_TIME: Book = {
     category: Category.SCIENCE,
     type: BookType.NON_FICTION,
     tags: [],
+    pagesRead: 67,
 };
 
 export const SILENT_SPRING: Book = {
@@ -296,6 +305,7 @@ export const SILENT_SPRING: Book = {
     category: Category.SCIENCE,
     type: BookType.NON_FICTION,
     tags: [],
+    pagesRead: 87,
 };
 
 // export const : Book = {
@@ -305,6 +315,7 @@ export const SILENT_SPRING: Book = {
 //     category: Category.SCIENCE_FICTION,
 //     type: BookType.FICTION,
 //     tags: [],
+    // pagesRead: 0,
 // };
 
 export const ALL_BOOKS: Book[] = [
@@ -328,6 +339,7 @@ export const BOOK_INITIALIZER: Book = {
     category: Category.SCIENCE_FICTION,
     type: BookType.FICTION,
     tags: [],
+    pagesRead: 0,
 };
 
 ///////////////////////////////////////////////

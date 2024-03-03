@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, signal } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 
@@ -14,10 +14,10 @@ import { Book } from 'src/app/common/interfaces';
 export class BookFormComponent implements OnInit {
     @Input()
     set book(book: Book) {
+        this.bookBS.next(book);
+        console.log('bF @i book: ', book);
+        console.log('bF @i t.bookBS.v: ', this.bookBS.value);
         if (book) {
-            this.bookBS.next(book);
-            // console.log('bF @i book: ', book);
-            // console.log('bF @i t.bookBS.v: ', this.bookBS.value);
             this.populateForm(book);
         }
     } 
@@ -26,22 +26,38 @@ export class BookFormComponent implements OnInit {
     }
     bookBS = new BehaviorSubject<Book>(BOOK_INITIALIZER);
 
+    @Input()
+    set nextId(id: number) {
+        if (id) {
+            this.nextIdSG.set(id);
+            console.log('bF @i next id: ', id);
+            console.log('bF @i t.nextIdSG(): ', this.nextIdSG());
+            
+        }
+    } 
+    get nextId() {
+        return this.nextIdSG();
+    }
+    nextIdSG = signal<number>(0);
+
     @Output() outputBook = new EventEmitter<Book | undefined>();
 
-    idControl = new FormControl('');
+    // idControl = new FormControl('');
     titleControl = new FormControl('');
     authorControl = new FormControl('');
     yearControl = new FormControl('');
     categoryControl = new FormControl('');
     typeControl = new FormControl('');
+    pagesReadControl = new FormControl(0);
 
     bookForm = new FormGroup({
-        'idControl': this.idControl,
+        // 'idControl': this.idControl,
         'titleControl': this.titleControl,
         'authorControl': this.authorControl,
         'yearControl': this.yearControl,
         'categoryControl': this.categoryControl,
         'typeControl': this.typeControl,
+        'pagesReadControl': this.pagesReadControl,
     });
 
     ngOnInit(): void {
@@ -61,25 +77,32 @@ export class BookFormComponent implements OnInit {
         this.yearControl.setValue(book.year);
         // this.categoryControl.setValue(book.category);
         // this.typeControl.setValue(book.type);
+        this.pagesReadControl.setValue(book.pagesRead);
         
         // console.log('bF pF populated form: ', this.bookForm);
     }
 
     handleSave() {
-        // console.log('bF hS handle save.  form value: ', this.bookForm.value);
+        console.log('bF hS handle save.  form value: ', this.bookForm.value);
+        const id = this.book?.id ?? this.nextId;
+        console.log('bF hS handle save. t.nextId/t.book.id: ', this.nextId, this.book?.id);
         if (this.bookForm.controls['titleControl'].value) {
+            console.log('bF hS handle save. id/t.book.id: ', id, this.book?.id);
             const book: Book = {
-                id: this.book.id ?? '',
+                id: id.toString(),
                 title: this.bookForm.controls['titleControl'].value ?? '',
                 author: this.bookForm.controls['authorControl'].value ?? '',
                 year: this.bookForm.controls['yearControl'].value ?? '',
+                pagesRead: this.bookForm.controls['pagesReadControl'].value ?? 0,
             }
-            // console.log('bF hS handle save. book: ', book);
-    
+            console.log('bF hS handle save. book: ', book);
+            
             this.outputBook.emit(book);
-            this.bookForm.reset();
-
+            
         }
+        console.log('bF hS calling reset');
+        this.bookForm.reset();
+        this.outputBook.emit(undefined);
     }
     
     handleCancel() {
