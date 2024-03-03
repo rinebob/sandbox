@@ -10,6 +10,7 @@ export enum SandboxRoutes {
     MATERIAL_VIEW = 'material-view',
     ANGULAR_NEW_FEATURES = 'ng-new-features',
     BOOKS_APP = 'books',
+    TODOS = 'todos',
 }
 
 export interface ColorSpec {
