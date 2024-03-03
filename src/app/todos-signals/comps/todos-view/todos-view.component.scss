@@ -1,0 +1,9 @@
+@use '../../../sanbox-mixins' as sandboxMixin;
+@use '../../../sandbox-variables' as sandboxVar;
+
+:host {
+    @include sandboxMixin.flexboxLayout(column, center, center);
+    @include sandboxMixin.border1();
+    margin: 20px;
+    padding: 20px;
+}
