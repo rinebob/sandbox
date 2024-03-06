@@ -1,0 +1,29 @@
+@use '../../../sanbox-mixins' as sandboxMixin;
+@use '../../../sandbox-variables' as sandboxVar;
+
+:host {
+    @include sandboxMixin.flexboxLayout(column, flex-start, center);
+    width: 500px;
+    
+    .todos-list, .todo-input {
+        width: 100%;
+        
+    }
+    
+    .todo-item {
+        @include sandboxMixin.flexboxLayout(row, flex-start, center);
+        width: 100%;
+
+        & mat-checkbox {
+            margin-left: auto;
+        }
+    
+    }
+    
+    .delete-todo {
+        cursor: pointer;
+        margin-right: 36px;
+    }
+}
+
+
