@@ -3,6 +3,8 @@
 
 :host {
     @include sandboxMixin.flexboxLayout(column, flex-start, center);
+    @include sandboxMixin.border1();
+    padding: 20px;
     width: 500px;
     
     .todos-list, .todo-input {

@@ -10,7 +10,7 @@ export class TodosService {
   constructor() { }
 
   async getTodos() {
-    await sleep(1000);
+    // await sleep(1000);
     return [...TODOS_MOCK_DATA];
   }
 

@@ -11,3 +11,4 @@ export const TODOS_MOCK_DATA: Todo[] = [
     {id: '7', title: 'Learn Nest', completed: false},
     {id: '8', title: 'Learn Next', completed: false},
 ];
+

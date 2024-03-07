@@ -1,4 +1,4 @@
-import { Component, effect, inject, viewChild } from '@angular/core';
+import { Component, OnInit, effect, inject, input, viewChild } from '@angular/core';
 import { NgStyle } from '@angular/common';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule, MatLabel, MatSuffix } from '@angular/material/form-field';
@@ -9,6 +9,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { TodosFilter, TodosStore } from '../../store/todos.store';
+import { Todo } from '../../common/interfaces-todos';
 
 @Component({
   selector: 'sg-todos-list',
@@ -17,7 +18,9 @@ import { TodosFilter, TodosStore } from '../../store/todos.store';
   templateUrl: './todos-list.component.html',
   styleUrl: './todos-list.component.scss'
 })
-export class TodosListComponent {
+export class TodosListComponent implements OnInit {
+
+    todos = input<Todo[]>()
 
     store = inject(TodosStore);
 
@@ -31,10 +34,20 @@ export class TodosListComponent {
         });
     }
 
+    ngOnInit(): void {
+        // console.log('tL ngOI input todos: ', this.todos());
+    }
+
     async onAddTodo(title: string) {
         await this.store.addTodo(title);
     }
 
+    async onViewTodo(id: string, event: MouseEvent) {
+        event.stopPropagation();
+        // console.log('tL oVT view todo id: ', id);
+        await this.store.viewTodo(id);
+    }
+    
     async onDeleteTodo(id: string, event: MouseEvent) {
         event.stopPropagation();
         await this.store.deleteTodo(id);

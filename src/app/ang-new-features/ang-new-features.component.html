@@ -1,11 +1,17 @@
 
-<div class="book-app-container">
+<div class="new-features-container">
 
-    <div class="upper-section">
+    <div class="section upper">
 
+        <p>Counter value: {{counter()}}</p>
+        
+        <p>Derived value: {{ derivedCounter() }}</p>
+
+        <button (click)="increment()">Increment</button>
+        
     </div>
 
-    <div class="lower-section">
+    <div class="section lower">
         
     </div>
 

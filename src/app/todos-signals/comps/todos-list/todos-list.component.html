@@ -33,8 +33,10 @@
 
             <div class="todo-item" (click)="onTodoToggled(todo.id, !todo.completed)">
 
+                <mat-icon class="delete-todo" (click)="onViewTodo(todo.id, $event)">edit</mat-icon>
+                
                 <mat-icon class="delete-todo" (click)="onDeleteTodo(todo.id, $event)">delete</mat-icon>
-
+                
                 <span [ngStyle]="{'text-decoration': todo.completed ? 'line-through' : 'none'}">{{todo.title}}</span>
                 
                 <mat-checkbox [checked]="todo.completed"></mat-checkbox>
@@ -44,7 +46,7 @@
 
     </div>
     
-        <!-- Note: causes recursive marking of all pending todos as completed - investigate -->
+        <!-- Note: causes recursive marking of all pending todos as completed -->
     <!-- <mat-selection-list class="todos-list">
     
         @for(todo of store.filteredTodos(); track todo.id; let index = $index) {

@@ -1,5 +1,11 @@
 <div class="todos-view-container">
 
-    <sg-todos-list/>
+    <button (click)="printToScreen()">Print to screen</button>
+
+    <sg-todos-list [todos]="store.todos()"/>
+
+    <sg-todo [todo]="store.todo()"
+             [someTodo]="store.todo()"
+    ></sg-todo>
     
 </div>

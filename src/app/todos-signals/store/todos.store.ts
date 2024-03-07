@@ -2,17 +2,20 @@ import { patchState, signalStore, withComputed, withMethods, withState } from "@
 import { Todo } from "../common/interfaces-todos";
 import { computed, inject } from "@angular/core";
 import { TodosService } from "../services/todos.service";
+import { TODO_INITIALIZER } from '../common/constants-todos';
 
 export type TodosFilter = 'all' | 'pending' | 'completed';
 
 type TodosState = {
     todos: Todo[];
+    todo: Todo;
     loading: boolean;
     filter: TodosFilter;
 }
 
 const initialState: TodosState = {
     todos: [],
+    todo: TODO_INITIALIZER,
     loading: false,
     filter: 'completed',
 }
@@ -30,8 +33,18 @@ export const TodosStore = signalStore(
 
                 const todos = await todosService.getTodos();
 
-                patchState(store, {todos, loading: false});
+                // console.log('tSto loadAll.  todos: ', todos);
+                
+                patchState(store, {todos, todo: todos[0], loading: false});
+                
+            },
 
+            async viewTodo(id: string) {
+                const todo = store.todos().find(todo => todo.id === id);
+                // console.log('tSto vT.  todo: ', todo);
+                patchState(store, (state) => ({
+                    todo: {...state.todo, ...todo}
+                }))
             },
 
             async addTodo(title: string) {
@@ -52,7 +65,7 @@ export const TodosStore = signalStore(
 
             async updateTodo(id: string, completed: boolean) {
                 await todosService.updateTodo(id, completed);
-                console.log('tSto wM updateTodo. id/completed: ', id, completed);
+                // console.log('tSto wM updateTodo. id/completed: ', id, completed);
 
                 patchState(store, (state) => ({
                     todos: state.todos.map(todo => todo.id == id ? {...todo, completed} : todo)
@@ -61,7 +74,7 @@ export const TodosStore = signalStore(
             },
 
             updateFilter(filter: TodosFilter) {
-                console.log('tSto wM updatefilter: ', filter);
+                // console.log('tSto wM updatefilter: ', filter);
                 patchState(store, {filter});
             }
         })
@@ -84,7 +97,7 @@ export const TodosStore = signalStore(
                     
                 case 'pending':
                     const pendingTodos = todos.filter(todo => !todo.completed);
-                    // console.log('tSt wCpending: ', pendingTodos);
+                    console.log('tSt wCpending: ', pendingTodos);
                     return pendingTodos;
                     // return todos.filter(todo => !todo.completed);
 
