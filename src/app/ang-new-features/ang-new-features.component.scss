@@ -4,15 +4,26 @@
 @use '../sandbox-themes' as sandbox;
 
 :host {
+    padding: 50px;
+    // width: 100%;
 
     .new-features-container {
+        @include sandboxMixin.flexboxLayout(column, flex-start, center);
+        @include sandboxMixin.border1();
+        padding: 100px;
+        
+        .section {
+            @include sandboxMixin.flexboxLayout(column, flex-start, center);
 
-        .upper-section {
+            button {
+                background-color: blue;
+                border-radius: 6px;
+                color: white;
+                margin-top: 20px;
+                padding: 8px 20px;
+            }
 
-        }
 
-        .lower-section {
-            
         }
     }
 }
