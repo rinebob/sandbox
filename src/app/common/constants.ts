@@ -8,6 +8,7 @@ export const SANDBOX_NAV_BUTTONS:NavButtonConfig[] = [
     {routerLink: SandboxRoutes.ANGULAR_NEW_FEATURES, text: 'Ng new features'},
     {routerLink: SandboxRoutes.BOOKS_APP, text: 'Book list manager'},
     {routerLink: SandboxRoutes.TODOS, text: 'Todos app - Signal Store'},
+    {routerLink: SandboxRoutes.ENERGY, text: 'Energy app'},
     
 ];
 

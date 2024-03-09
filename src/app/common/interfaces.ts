@@ -11,6 +11,7 @@ export enum SandboxRoutes {
     ANGULAR_NEW_FEATURES = 'ng-new-features',
     BOOKS_APP = 'books',
     TODOS = 'todos',
+    ENERGY = 'energy',
 }
 
 export interface ColorSpec {

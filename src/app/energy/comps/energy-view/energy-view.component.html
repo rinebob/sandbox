@@ -1,0 +1,173 @@
+<div class="energy-view-container">
+    <button (click)="printState()">Print state</button>
+
+    <div class="zip-code-form">
+        <input type="text" #locationInput>
+        <button (click)="handleGetLocation(locationInput.value)">Get Location</button>
+    </div>
+
+    <div class="utilities-form">
+
+        <form [formGroup]="utilitiesForm">
+
+            @if(plansStore.electricUtilities().length) {
+                
+                <div class="select-container">
+                    <p class="select-label">My Electric Utility</p>
+                    <select class="select" name="electricUtilitySelect" formControlName="electricControl">
+                        
+                        <option value="">Choose Your Electric Utility</option>
+                        @for(util of plansStore.electricUtilities(); track util) {
+
+                            <option [value]="util">
+                            {{util}}
+                            </option>
+                
+                        }
+                    </select>
+
+                </div>
+
+            }
+
+            @if(plansStore.gasUtilities().length) {
+                
+                <div class="select-container">
+                    <p class="select-label">My Gas Utility</p>
+                    <select class="select" name="gasUtilitySelect" formControlName="gasControl">
+                        
+                        <option value="">Choose Your Gas Utility</option>
+                        @for(util of plansStore.gasUtilities(); track util) {
+
+                            <option [value]="util">
+                            {{util}}
+                            </option>
+                
+                        }
+                    </select>
+
+                </div>
+
+            }
+
+            <button (click)="handleSeeRates()">See rates</button>
+
+
+        </form>
+
+    </div>
+
+    <div>
+        @if(locationStore.location()) {
+            <h2>Location</h2>
+            {{ locationStore.location() | json}}
+        }
+        
+        @if(locationStore.message()) {
+            <h2>location store message</h2>
+            {{locationStore.message()}}
+        }
+
+        @if(locationStore.zipCodeState()) {
+            <h2>location zip code state</h2>
+            {{locationStore.zipCodeState()}}
+        }
+
+        <h2>promo state/location state/states match</h2>
+        {{promoStore.campaignState()}} / {{locationStore.location()?.State}} / {{promoStore.statesMatch()}}
+        
+        <h2>Electric/gas utilities</h2>
+        {{plansStore.electricUtilities()}} / {{plansStore.gasUtilities()}}
+
+        <h2>Selected utilities</h2>
+        {{plansStore.selectedUtilities() | json}}
+
+        @if(plansStore.ids() && plansStore.entityMap()) {
+            <h2>Plans store entity map iteration</h2>
+            
+            @for(id of plansStore.ids(); track id) {
+                <div style="margin-bottom: 20px">
+                    <p>id: {{id}}</p>
+                    {{plansStore.entityMap()[id] | json}}
+                </div>
+            }
+        }
+
+        @if(plansStore.entityMap()) {
+            <h2>Plans store entity map</h2>
+            {{plansStore.entityMap() | json}}
+        }
+
+        @if(plansStore.entities()) {
+            <h2>Plans store entities (Default Plans)</h2>
+            
+            @for(plan of plansStore.entities(); track plan.index) {
+                <div style="margin-bottom: 20px">
+                    <p>plan code: {{plan.rateCode}}</p>
+                    {{plan | json}}
+                </div>
+            }
+        }
+
+        <!-- @if(plansStore.defaultPlans()) {
+            <h2>Default Plans</h2>
+            
+            @for(plan of plansStore.defaultPlans(); track plan.index) {
+                <div style="margin-bottom: 20px">
+                    <p>plan code: {{plan.rateCode}}</p>
+                    {{plan | json}}
+                </div>
+
+            }
+        } -->
+
+        @if(promoStore.campaignDetails()) {
+            <h2>Campaign Energy Plans</h2>
+            @for(plan of promoStore.campaignEnergyPlans(); track plan.Index) {
+                <div style="margin-bottom: 20px">
+                    <p>plan code: {{plan.RateCode}}</p>
+                    {{plan | json}}
+                </div>
+            }
+        }
+        
+        @if(promoStore.campaignDetails()) {
+            <h2>Campaign details</h2>
+            <div style="margin-bottom: 20px">
+                <p>promo code: {{promoStore.promoCode()}}</p>
+                {{promoStore.campaignDetails() | json}}
+            </div>
+            
+            
+        }
+
+        @if(plansStore.electricPlans()) {
+            <h2>Electric Plans</h2>
+            
+            @for(plan of plansStore.electricPlans(); track plan.index) {
+                <div style="margin-bottom: 20px">
+                    <p>plan code: {{plan.rateCode}}</p>
+                    {{plan | json}}
+                </div>
+
+            }
+        }
+
+        @if(plansStore.gasPlans()) {
+            <h2>Gas Plans</h2>
+            
+            @for(plan of plansStore.gasPlans(); track plan.index) {
+                <div style="margin-bottom: 20px">
+                    <p>plan code: {{plan.rateCode}}</p>
+                    {{plan | json}}
+                </div>
+
+            }
+        }
+
+
+    </div>
+
+    
+    
+</div>
