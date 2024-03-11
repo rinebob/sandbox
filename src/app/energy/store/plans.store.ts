@@ -12,12 +12,14 @@ type PlansState = {
     zipCode: string | undefined;
     message: string | undefined;
     selectedUtilities: SelectedIds;
+    selectedPlans: SelectedIds;
 }
 
 const initialState: PlansState = {
     zipCode: undefined,
     message: undefined,
     selectedUtilities: {[CommodityType.ELECTRIC]: '', [CommodityType.GAS]: ''},
+    selectedPlans: {[CommodityType.ELECTRIC]: '', [CommodityType.GAS]: ''},
 }
 
 export const PlansStore = signalStore(
@@ -52,6 +54,11 @@ export const PlansStore = signalStore(
             };
 
             patchState(store, {selectedUtilities})
+        },
+        setSelectedPlans(selectedPlans: SelectedIds) {
+            
+
+            patchState(store, {selectedPlans})
         }
     }),
     ),
@@ -97,6 +104,15 @@ export const PlansStore = signalStore(
                 }
             }
             return utilities;
+        }),
+        plansForSelectedUtilities: computed(() => {
+            const selectedUtilities = state.selectedUtilities();
+            const plansForUtilities = state.entities().filter(plan => plan.utilityId === selectedUtilities[CommodityType.ELECTRIC] || plan.utilityId === selectedUtilities[CommodityType.GAS]);
+
+            console.log('pSto pFSU plans for utils.  selectedUtils: ', selectedUtilities);
+            console.log('pSto pFSU plans for utils.  plans: ', plansForUtilities);
+
+            return plansForUtilities;
         }),
     })),
 

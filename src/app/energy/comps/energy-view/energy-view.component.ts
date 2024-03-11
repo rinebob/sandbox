@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 import { LocationStore } from '../../store/location.store';
 import { PlansStore } from '../../store/plans.store';
-import { CommodityType, LocationFromZipCode, RouteParam, SelectedIds } from '../../common/interfaces-energy';
+import { CommodityType, EnergyPlan, LocationFromZipCode, RouteParam, SelectedIds } from '../../common/interfaces-energy';
 import { PromoStore } from '../../store/promo.store';
 
 @Component({
@@ -123,6 +123,16 @@ export class EnergyViewComponent implements OnInit {
         const selectedGasUtility = this.utilitiesForm.controls.gasControl.value ? this.utilitiesForm.controls.gasControl.value : '';
         const utils: SelectedIds = {[CommodityType.ELECTRIC]: selectedElectricUtility, [CommodityType.GAS]: selectedGasUtility}
         this.plansStore.setSelectedUtilities(utils);
+    }
+    
+    handleSelectPlan(rateCode: string, comType: string) {
+        console.log('eV hSR handle select plan. plan.rateCode: ', rateCode);
+        const selectedPlans: SelectedIds = {[CommodityType.ELECTRIC]: '', [CommodityType.GAS]: ''};
+        const commodityType = comType as CommodityType;
+        selectedPlans[commodityType] = rateCode;
+        console.log('eV hSR selectedPlans: ', selectedPlans);
+        
+        
     }
     
     getCampaignDetails(promoCode: string) {
