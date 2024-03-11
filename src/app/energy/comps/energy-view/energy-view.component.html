@@ -58,6 +58,24 @@
     </div>
 
     <div>
+
+        @if(plansStore.plansForSelectedUtilities()) {
+            <h2>Plans for selected utilities</h2>
+            
+            @for(plan of plansStore.plansForSelectedUtilities(); track plan.rateCode) {
+                <div style="margin-bottom: 20px">
+                    <p>plan Id: {{plan.rateCode}}</p>
+                    <p>Commodity type: {{plan.commodityType}}</p>
+                    <p>Utility: {{plan.utilityPublicName}}</p>
+
+                    <button (click)="handleSelectPlan(plan.rateCode, plan.commodityType)" class="select-button">
+                        Select plan
+                    </button>
+                    <p>{{plan | json}}</p>
+                </div>
+            }
+        }
+
         @if(locationStore.location()) {
             <h2>Location</h2>
             {{ locationStore.location() | json}}
